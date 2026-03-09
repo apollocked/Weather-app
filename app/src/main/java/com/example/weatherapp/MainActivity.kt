@@ -78,7 +78,8 @@ class MainActivity : AppCompatActivity() {
                 )
                 updateUI(response)
             } catch (e: Exception) {
-                Toast.makeText(this@MainActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "Error: ${e.message}",
+                    Toast.LENGTH_SHORT).show()
                 e.printStackTrace()
             } finally {
                 binding.progressBar.visibility = View.GONE
@@ -94,7 +95,25 @@ class MainActivity : AppCompatActivity() {
         // 1. Update Current Weather (Top Card)
         if (data.list.isNotEmpty()) {
             val current = data.list[0]
+            val weatherIcon = when (current.weather.firstOrNull()?.main) {
+                "Clear" -> R.drawable.ic_sunny
 
+                "Clouds" -> R.drawable.ic_cloudy
+
+                "Rain", "Drizzle" -> R.drawable.ic_rainy
+
+                "Thunderstorm" -> R.drawable.ic_thunderstorm
+
+                "Snow" -> R.drawable.ic_snowy
+
+                // Atmosphere group: Mist, Smoke, Haze, Dust, Fog, Sand, Ash, Squall, Tornado
+                "Mist", "Fog", "Haze", "Smoke", "Dust", "Sand" -> R.drawable.ic_foggy
+
+                else -> R.drawable.ic_weather_default // Fallback icon if none match
+            }
+
+// Apply the icon to the ImageView
+            binding.ivWeatherIcon.setImageResource(weatherIcon)
             binding.tvCityName.text = data.city.name
             binding.tvTemp.text = "${current.main.temp.toInt()}°C"
 
@@ -131,6 +150,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = ForecastAdapter(dailyForecasts)
         binding.recyclerViewForecast.adapter = adapter
     }
+
 
     private fun processForecastData(list: List<ForecastItem>): List<DailyForecast> {
         val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
