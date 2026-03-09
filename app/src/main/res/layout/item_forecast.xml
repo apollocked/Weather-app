@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:gravity="center_vertical"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Tomorrow, 15:00"
+        android:textColor="#333333"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvTempItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="25°C"
+        android:textColor="#1E88E5"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="16dp"/>
+
+    <TextView
+        android:id="@+id/tvDescItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear Sky"
+        android:textColor="#666666"
+        android:textSize="14sp" />
+
+</LinearLayout>

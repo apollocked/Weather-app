@@ -1,33 +1,38 @@
-package com.example.weatherapp.models
+package com.example.weatherapp
 
 import com.google.gson.annotations.SerializedName
 
+// Main response for Forecast API
 data class WeatherResponse(
-    @SerializedName("coord") val coord: Coord,
-    @SerializedName("weather") val weather: List<Weather>,
-    @SerializedName("base") val base: String,
-    @SerializedName("main") val main: Main,
-    @SerializedName("visibility") val visibility: Int,
-    @SerializedName("wind") val wind: Wind,
-    @SerializedName("clouds") val clouds: Clouds,
-    @SerializedName("dt") val dt: Long,
-    @SerializedName("sys") val sys: Sys,
-    @SerializedName("timezone") val timezone: Int,
+    @SerializedName("cod") val cod: String,
+    @SerializedName("message") val message: Int,
+    @SerializedName("cnt") val cnt: Int,
+    @SerializedName("list") val list: List<ForecastItem>,
+    @SerializedName("city") val city: CityInfo
+)
+
+data class CityInfo(
     @SerializedName("id") val id: Int,
     @SerializedName("name") val name: String,
-    @SerializedName("cod") val cod: Int
+    @SerializedName("coord") val coord: Coord,
+    @SerializedName("country") val country: String,
+    @SerializedName("population") val population: Int,
+    @SerializedName("timezone") val timezone: Int,
+    @SerializedName("sunrise") val sunrise: Long,
+    @SerializedName("sunset") val sunset: Long
 )
 
-data class Coord(
-    @SerializedName("lon") val lon: Double,
-    @SerializedName("lat") val lat: Double
-)
-
-data class Weather(
-    @SerializedName("id") val id: Int,
-    @SerializedName("main") val main: String,
-    @SerializedName("description") val description: String,
-    @SerializedName("icon") val icon: String
+// Each item in the list (represents a 3-hour block)
+data class ForecastItem(
+    @SerializedName("dt") val dt: Long,
+    @SerializedName("main") val main: Main,
+    @SerializedName("weather") val weather: List<Weather>,
+    @SerializedName("clouds") val clouds: Clouds,
+    @SerializedName("wind") val wind: Wind,
+    @SerializedName("visibility") val visibility: Int,
+    @SerializedName("pop") val pop: Double, // Probability of precipitation
+    @SerializedName("sys") val sys: ForecastSys,
+    @SerializedName("dt_txt") val dtTxt: String
 )
 
 data class Main(
@@ -36,9 +41,17 @@ data class Main(
     @SerializedName("temp_min") val tempMin: Double,
     @SerializedName("temp_max") val tempMax: Double,
     @SerializedName("pressure") val pressure: Int,
-    @SerializedName("humidity") val humidity: Int,
     @SerializedName("sea_level") val seaLevel: Int,
-    @SerializedName("grnd_level") val grndLevel: Int
+    @SerializedName("grnd_level") val grndLevel: Int,
+    @SerializedName("humidity") val humidity: Int,
+    @SerializedName("temp_kf") val tempKf: Double
+)
+
+data class Weather(
+    @SerializedName("id") val id: Int,
+    @SerializedName("main") val main: String,
+    @SerializedName("description") val description: String,
+    @SerializedName("icon") val icon: String
 )
 
 data class Wind(
@@ -51,8 +64,11 @@ data class Clouds(
     @SerializedName("all") val all: Int
 )
 
-data class Sys(
-    @SerializedName("country") val country: String,
-    @SerializedName("sunrise") val sunrise: Long,
-    @SerializedName("sunset") val sunset: Long
+data class ForecastSys(
+    @SerializedName("pod") val pod: String
+)
+
+data class Coord(
+    @SerializedName("lon") val lon: Double,
+    @SerializedName("lat") val lat: Double
 )
