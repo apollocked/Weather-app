@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.weatherapp.databinding.ActivityMainBinding
+import com.example.weatherapp.models.WeatherApi
+import com.example.weatherapp.models.WeatherResponse
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var weatherApi: WeatherApi
 
     // Replace with your actual key
-    private val API_KEY = "8e98a19f9805c1b99f7828d30cfeeae8"
+    private val apiKey = "8e98a19f9805c1b99f7828d30cfeeae8"
 
     // Data class to hold city info
     data class City(val name: String, val lat: Double, val lon: Double)
@@ -73,7 +75,7 @@ class MainActivity : AppCompatActivity() {
                 val response = weatherApi.getWeather(
                     lat = city.lat,
                     lon = city.lon,
-                    apiKey = API_KEY
+                    apiKey = apiKey
                 )
                 updateUI(response)
             } catch (e: Exception) {
@@ -92,7 +94,7 @@ class MainActivity : AppCompatActivity() {
 
             // Capitalize first letter of description
             val desc = data.weather[0].description
-            tvDesc.text = desc.replaceFirstChar { it.uppercase() }
+            tvDesc.text = desc.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
 
             tvHumidity.text = "Humidity: ${data.main.humidity}%"
             tvWind.text = "Wind: ${data.wind.speed} m/s"
