@@ -16,7 +16,7 @@ class ForecastAdapter(private val items: List<DailyForecast>) :
         val tvTempHigh: TextView = view.findViewById(R.id.tvTempHigh)
         val tvTempLow: TextView = view.findViewById(R.id.tvTempLow)
         val tvDesc: TextView = view.findViewById(R.id.tvDescItem)
-        val ivIcon: ImageView = view.findViewById(R.id.ivForecastIcon) // Add ImageView
+        val ivIcon: ImageView = view.findViewById(R.id.ivForecastIcon)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForecastViewHolder {
@@ -28,12 +28,18 @@ class ForecastAdapter(private val items: List<DailyForecast>) :
     override fun onBindViewHolder(holder: ForecastViewHolder, position: Int) {
         val item = items[position]
 
-        holder.tvDate.text = item.date
+        // --- CHANGE: Check if it is the first item (Tomorrow) ---
+        if (position == 0) {
+            holder.tvDate.text = "Tomorrow"
+        } else {
+            holder.tvDate.text = item.date
+        }
+
         holder.tvTempHigh.text = "${item.tempMax}°"
         holder.tvTempLow.text = "${item.tempMin}°"
         holder.tvDesc.text = item.description
 
-        // --- ICON LOGIC (Same as Main Activity) ---
+        // --- ICON LOGIC ---
         val weatherIcon = when (item.iconReference) {
             "Clear" -> R.drawable.ic_sunny
             "Clouds" -> R.drawable.ic_cloudy
