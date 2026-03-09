@@ -169,11 +169,15 @@ class MainActivity : AppCompatActivity() {
 
             val tempMax = itemsInDay.maxOf { it.main.tempMax }.toInt()
             val tempMin = itemsInDay.minOf { it.main.tempMin }.toInt()
+// Inside processForecastData function...
 
             val midDayItem = itemsInDay.minByOrNull {
                 val hour = SimpleDateFormat("HH", Locale.getDefault()).format(Date(it.dt * 1000)).toInt()
                 abs(hour - 15)
             }
+
+// Get the main weather string (e.g., "Clear", "Rain")
+            val mainWeather = midDayItem?.weather?.firstOrNull()?.main ?: "Clear"
 
             val description = midDayItem?.weather?.firstOrNull()?.description ?: "N/A"
             val displayDate = outputFormat.format(Date(itemsInDay.first().dt * 1000))
@@ -183,7 +187,8 @@ class MainActivity : AppCompatActivity() {
                     date = displayDate,
                     tempMax = tempMax,
                     tempMin = tempMin,
-                    description = description.replaceFirstChar { it.uppercase() }
+                    description = description.replaceFirstChar { it.uppercase() },
+                    iconReference = mainWeather // ADD THIS LINE
                 )
             )
         }
