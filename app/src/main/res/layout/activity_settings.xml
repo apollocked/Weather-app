@@ -33,8 +33,7 @@
             android:id="@+id/spinnerCitiesSettings"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:paddingHorizontal="12dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Light" />
+            android:paddingHorizontal="12dp" />
     </FrameLayout>
 
     <TextView

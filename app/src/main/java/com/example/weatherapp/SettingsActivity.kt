@@ -4,8 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.weatherapp.Utilis.cities
@@ -22,9 +23,21 @@ class SettingsActivity : AppCompatActivity() {
 
         val sharedPref = getSharedPreferences("WeatherPrefs", Context.MODE_PRIVATE)
 
-        // Setup Spinner
+        // Setup Spinner with custom item layout to ensure text color is correct in all themes
         val cityNames = cities.map { it.name }
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, cityNames)
+        val adapter = object : ArrayAdapter<String>(this, R.layout.spinner_item, cityNames) {
+            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                val v = super.getView(position, convertView, parent)
+                (v as TextView).setTextColor(resources.getColor(if (isDarkMode()) R.color.white else R.color.black, theme))
+                return v
+            }
+
+            override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                val v = super.getDropDownView(position, convertView, parent)
+                // Use a neutral background for dropdown or handle it via theme
+                return v
+            }
+        }
         binding.spinnerCitiesSettings.adapter = adapter
 
         // Set current selection
@@ -71,5 +84,10 @@ class SettingsActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    private fun isDarkMode(): Boolean {
+        val sharedPref = getSharedPreferences("WeatherPrefs", Context.MODE_PRIVATE)
+        return sharedPref.getBoolean("darkMode", false)
     }
 }
