@@ -33,7 +33,8 @@
             android:id="@+id/spinnerCitiesSettings"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:paddingHorizontal="12dp" />
+            android:paddingHorizontal="12dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Light" />
     </FrameLayout>
 
     <TextView
@@ -67,7 +68,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#DDDDDD"
+        android:background="?android:attr/dividerVertical"
         android:layout_marginBottom="24dp"/>
 
     <com.google.android.material.materialswitch.MaterialSwitch

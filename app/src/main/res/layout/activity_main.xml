@@ -36,7 +36,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@android:drawable/ic_menu_manage"
+                android:src="@drawable/ic_settings"
                 app:tint="@android:color/white"
                 tools:ignore="ContentDescription" />
         </RelativeLayout>
@@ -165,7 +165,7 @@
                             android:layout_height="wrap_content"
                             android:text="Humidity"
                             android:textColor="#E0E0E0"
-                            android:textSize="10sp"/>
+                            android:textSize="11sp"/>
                         <TextView
                             android:id="@+id/tvHumidity"
                             android:layout_width="wrap_content"
@@ -187,7 +187,7 @@
                             android:layout_height="wrap_content"
                             android:text="Wind"
                             android:textColor="#E0E0E0"
-                            android:textSize="10sp"/>
+                            android:textSize="11sp"/>
                         <TextView
                             android:id="@+id/tvWind"
                             android:layout_width="wrap_content"
