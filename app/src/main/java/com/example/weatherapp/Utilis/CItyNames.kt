@@ -1,6 +1,6 @@
 package com.example.weatherapp.Utilis
 
-import com.example.weatherapp.MainActivity.City
+data class City(val name: String, val lat: Double, val lon: Double)
 
 val cities = listOf(
     City("Erbil (Hewlêr)", 36.19, 44.01),

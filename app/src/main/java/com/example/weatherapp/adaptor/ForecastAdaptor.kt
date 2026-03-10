@@ -1,4 +1,4 @@
-package com.example.weatherapp
+package com.example.weatherapp.adaptor
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.weatherapp.R
 import com.example.weatherapp.models.DailyForecast
 
-class ForecastAdapter(private val items: List<DailyForecast>) :
+class ForecastAdapter(private val items: List<DailyForecast>, private val unitSymbol: String = "°") :
     RecyclerView.Adapter<ForecastAdapter.ForecastViewHolder>() {
 
     class ForecastViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -28,18 +29,16 @@ class ForecastAdapter(private val items: List<DailyForecast>) :
     override fun onBindViewHolder(holder: ForecastViewHolder, position: Int) {
         val item = items[position]
 
-        // --- CHANGE: Check if it is the first item (Tomorrow) ---
         if (position == 0) {
             holder.tvDate.text = "Tomorrow"
         } else {
             holder.tvDate.text = item.date
         }
 
-        holder.tvTempHigh.text = "${item.tempMax}°"
-        holder.tvTempLow.text = "${item.tempMin}°"
+        holder.tvTempHigh.text = "${item.tempMax}${unitSymbol}"
+        holder.tvTempLow.text = "${item.tempMin}${unitSymbol}"
         holder.tvDesc.text = item.description
 
-        // --- ICON LOGIC ---
         val weatherIcon = when (item.iconReference) {
             "Clear" -> R.drawable.ic_sunny
             "Clouds" -> R.drawable.ic_cloudy
