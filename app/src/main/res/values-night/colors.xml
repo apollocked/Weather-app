@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gradient_start">#1A237E</color>
+    <color name="gradient_end">#000000</color>
+    <color name="forecast_item_bg">#33FFFFFF</color>
+    <color name="forecast_text_primary">#FFFFFF</color>
+    <color name="forecast_text_secondary">#E0E0E0</color>
+</resources>

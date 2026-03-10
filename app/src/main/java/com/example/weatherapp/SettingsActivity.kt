@@ -58,7 +58,7 @@ class SettingsActivity : AppCompatActivity() {
                 apply()
             }
 
-            // Apply Dark Mode immediately
+            // Apply Dark Mode immediately and globally
             if (darkMode) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             } else {

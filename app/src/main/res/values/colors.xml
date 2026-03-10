@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gradient_start">#42A5F5</color>
+    <color name="gradient_end">#1E88E5</color>
+    <color name="forecast_item_bg">#F5F5F5</color>
+    <color name="forecast_text_primary">#333333</color>
+    <color name="forecast_text_secondary">#666666</color>
 </resources>

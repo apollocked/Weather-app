@@ -136,6 +136,11 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/high"
+                            tools:ignore="ContentDescription" />
                         <TextView
                             android:id="@+id/tvTempMax"
                             android:layout_width="wrap_content"
@@ -160,16 +165,16 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical">
-                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Humidity"
-                            android:textColor="#E0E0E0"
-                            android:textSize="11sp"/>
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/humidity"
+                            tools:ignore="ContentDescription" />
                         <TextView
                             android:id="@+id/tvHumidity"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
                             android:text="--%"
                             android:textColor="@android:color/white"
                             android:textSize="14sp"
@@ -182,16 +187,16 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Wind"
-                            android:textColor="#E0E0E0"
-                            android:textSize="11sp"/>
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/wind"
+                            tools:ignore="ContentDescription" />
                         <TextView
                             android:id="@+id/tvWind"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
                             android:text="-- m/s"
                             android:textColor="@android:color/white"
                             android:textSize="14sp"

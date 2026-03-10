@@ -10,6 +10,7 @@ class WeatherApplication : Application() {
         val sharedPref = getSharedPreferences("WeatherPrefs", Context.MODE_PRIVATE)
         val isDarkMode = sharedPref.getBoolean("darkMode", false)
         
+        // Use a more robust way to set the mode
         if (isDarkMode) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         } else {

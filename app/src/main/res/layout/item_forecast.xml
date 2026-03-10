@@ -5,20 +5,18 @@
     android:orientation="horizontal"
     android:padding="16dp"
     android:gravity="center_vertical"
-    android:background="#F5F5F5"
+    android:background="@color/forecast_item_bg"
     android:layout_marginBottom="4dp">
 
-    <!-- Date takes less weight now -->
     <TextView
         android:id="@+id/tvDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Tomorrow"
-        android:textColor="#333333"
+        android:textColor="@color/forecast_text_primary"
         android:textSize="16sp" />
 
-    <!-- NEW: Weather Icon -->
     <ImageView
         android:id="@+id/ivForecastIcon"
         android:layout_width="32dp"
@@ -26,7 +24,6 @@
         android:layout_marginEnd="12dp"
         android:src="@drawable/ic_weather_default" />
 
-    <!-- Vertical layout for Temps -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +54,7 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="Clear Sky"
-        android:textColor="#666666"
+        android:textColor="@color/forecast_text_secondary"
         android:textSize="14sp" />
 
 </LinearLayout>
